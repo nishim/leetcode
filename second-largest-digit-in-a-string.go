@@ -3,12 +3,12 @@ package leetcode
 func secondHighest(s string) int {
 	h1 := -1
 	h2 := -1
-	a2i := map[rune]int{'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
 	for _, r := range s {
-		i, ok := a2i[r]
-		if !ok {
+		if '0' > r || '9' < r {
 			continue
 		}
+
+		i := int(r - '0')
 
 		if i > h1 {
 			h2 = h1
