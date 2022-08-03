@@ -3,11 +3,15 @@
 # @return {Integer[]}
 def two_sum(nums, target)
     l = nums.length
-    (0..(l - 2)).each do |i|
-        ((i + 1)..(l - 1)).each do |j|
-            if (nums[i] + nums[j]) == target
-                return [i, j]
-            end
+    h = {}
+    (0..(l - 1)).each do |i|
+        h[nums[i]] = i
+    end
+
+    (0..(l - 1)).each do |i|
+        k = target - nums[i]
+        if h.key?(k) and h[k] != i then
+            return [i, h[k]].sort
         end
     end
 end
